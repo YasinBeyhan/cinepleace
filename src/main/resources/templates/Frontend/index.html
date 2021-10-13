@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta id="Viewport" name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no, shrink-to-fit=no"/>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
+    <script src="https://unpkg.com/vue" defer></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!--    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.9.1/axios.js"></script>
+    <script src="#" type="module" th:src="@{/js/script.js}" defer></script>
+
+</head>
+
+
+<body>
+<header class="p-3 bg-dark text-white">
+    <nav>
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                        <use xlink:href="#bootstrap"></use>
+                    </svg>
+                </a>
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="#" class="nav-link" th:href="@{http://localhost:8080/home}">Start</a></li>
+                    <li><a href="#" class="nav-link" th:href="@{http://localhost:8080/layout}">Filme</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+
+                </ul>
+
+                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                    <input type="search" class="form-control form-control-dark" placeholder="Search..."
+                           aria-label="Search">
+                </form>
+
+                <div class="text-end">
+                    <button type="button" class="btn btn-outline-light me-2">Login</button>
+                    <button type="button" class="btn btn-warning">Sign-up</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<form method="post" action="/addFilm">
+    <input type="number" id="22" name="name" placeholder="film_id">
+    <input type="text" id="name" name="name" placeholder="Beschreibung">
+    <input type="text" name="genre" placeholder="Genre">
+    <input type="text" name="erscheinungsJahr" placeholder="Erscheinungsjahr">
+    <input type="text" name="bildUrl" placeholder="Bild Url">
+    <input type="submit">
+</form>
+
+<script>
+    sendData();
+
+    function sendData() {
+
+        let data = new FormData();
+        data.append('ID', '22');
+        data.append('name', 'nhal');
+        data.append('genre', 'genre');
+        data.append('erscheinungsJahr', '222');
+        data.append('bildUrl', 'google.de');
+        axios.post('/addFilm', data);
+        // axios({
+        //     method: 'post',
+        //     url: '/addFilm',
+        //     data: data
+        // })
+    }
+</script>
+<h1>Meine Favoriten</h1>
+<div id="#app">
+    <div>
+        <input v-model="newCat">
+        <button v-on:click="sendData()" v-on:keyup.enter="addKitty()">
+            ADD+
+        </button>
+        <ul>
+            <li v-for=" cat in Cats">{{ cat.name }}</li>
+        </ul>
+    </div>
+</div>
+
+
+</body>
+</html>
