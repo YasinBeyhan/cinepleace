@@ -1,4 +1,3 @@
-# s0574094-s0575602-WEBTECH-Projekt
-Unser Projekt soll sich darum drehen, einen Filmgenerator bereitzustellen.
-Der random Filmtitel zur Schau stellt und angemeldete User sich auf Wunsch diese 
-Vorschläge in einer Watchlist abspeichern.
+# Cinepleace-Projekt-0575602-0575785
+Filme können bewertet werden mit Sternen von 1-5
+Favoriten in einer Watchlist abspeichern die wiederrum in der DB abgespeichert werden.
