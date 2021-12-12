@@ -30,6 +30,11 @@ public class ControllerHome {
         return "Frontend/index";
     }
 
+    @GetMapping(path = "rate")
+    public String ratingtest(Model model) {
+        return "Frontend/bewertung";
+    }
+
 
     @PostMapping(path = "/addFilm")
     public ResponseEntity addFilm(@RequestParam(name = "ID") int film_id,

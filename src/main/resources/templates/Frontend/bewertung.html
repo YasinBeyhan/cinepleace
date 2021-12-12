@@ -4,6 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="#" type="module" th:src="@{/js/StarRating.js}" defer></script>
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue-star-rating/dist/VueStarRating.umd.min.js"></script>`
+    <script src="https://unpkg.com/vue-star-rating@next/dist/VueStarRating.umd.min.js"></script>
 </head>
 <body>
 <template>
@@ -11,6 +16,7 @@
         <AwesomeVueStarRating :star="this.star" :disabled="this.disabled" :maxstars="this.maxstars" :starsize="this.starsize" :hasresults="this.hasresults" :hasdescription="this.hasdescription" :ratingdescription="this.ratingdescription" />
     </div>
 </template>
+
 </body>
 <h1 th:text="${rate}"/>
 
