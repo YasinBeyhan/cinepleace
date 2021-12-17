@@ -41,8 +41,24 @@ public class WatchlistRepository {
 
     @Transactional
     public void insertWithQuery(Watchlist watchlist) {
-        entityManager.createNativeQuery("INSERT INTO WATCHLIST (watchlist_id, name) VALUES (idwatchlist.nextval,?)")
-                .setParameter(1, watchlist.getName())
+        // For test-purposes ID = 0 is used
+        if (watchlist.getWatchlist_id() == 0) {
+            entityManager.createNativeQuery("INSERT INTO WATCHLIST (watchlist_id, name) VALUES (?,?)")
+                    .setParameter(1, watchlist.getWatchlist_id())
+                    .setParameter(2, watchlist.getName())
+                    .executeUpdate();
+        }
+        else {
+            entityManager.createNativeQuery("INSERT INTO WATCHLIST (watchlist_id, name) VALUES (idwatchlist.nextval,?)")
+                    .setParameter(1, watchlist.getName())
+                    .executeUpdate();
+        }
+    }
+
+    @Transactional
+    public void removeWithQuery(Watchlist watchlist) {
+        entityManager.createNativeQuery("DELETE FROM WATCHLIST WHERE watchlist_id = ?")
+                .setParameter(1, watchlist.getWatchlist_id())
                 .executeUpdate();
     }
 }

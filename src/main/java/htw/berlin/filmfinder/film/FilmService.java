@@ -23,18 +23,18 @@ public class FilmService {
     }
 
     public void addNewFilm(Film film) {
+
         Optional<Film> filmOptional = filmRepository.findFilmByBezeichnung(film.getBezeichnung());
 
         if (filmOptional.isPresent()) {
             throw new IllegalStateException("Film bereits in der Datenbank");
         }
-        System.out.println(film);
 
         if(filmOptional.isPresent()) {
             throw new IllegalStateException("Film bereits in der Datenbank");
         }
 
-        filmRepository.save(film);
+        filmRepository.insertFilm(film.getFilm_id(), film.getBezeichnung(), film.getGenre(), film.getErscheinungsjahr(), film.getBild_url());
     }
 
     public void deleteFilm(int film_id) {
@@ -42,7 +42,8 @@ public class FilmService {
         if (!exists) {
             throw new IllegalStateException("film with id " + film_id + " dies not exists");
         }
-        filmRepository.deleteById(film_id);
+        filmRepository.deleteFilm(film_id);
+        //filmRepository.deleteById(film_id);
     }
 
 

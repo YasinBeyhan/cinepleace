@@ -29,5 +29,11 @@ public class WatchlistService {
 
         watchlistRepository.insertWithQuery(watchlist);
     }
+
+    @Transactional
+    public void removeFromWatchlist(Watchlist watchlist) {
+
+        watchlistRepository.removeWithQuery(watchlist);
+    }
 }
 

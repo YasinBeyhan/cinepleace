@@ -32,6 +32,18 @@ public class ControllerWatchlist {
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
+    @PostMapping(path = "/removeFromWatchlist")
+    public ResponseEntity removeFromWatchlist(@RequestParam(name = "ID") int watchlist_id) {
+        Watchlist watchlist = new Watchlist(watchlist_id, "..");
+        try {
+
+            watchlistService.removeFromWatchlist(watchlist);
+        } catch (Exception ex) {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
     @PostMapping(path = "/getFullWatchlist")
     public ResponseEntity getAllWatchlistMovies() {
         String returnCode = "<div>";
