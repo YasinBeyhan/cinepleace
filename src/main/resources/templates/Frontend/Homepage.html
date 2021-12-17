@@ -2,47 +2,31 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Filmfinder</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-
-        </head>
-
-    <header class="p-3 bg-dark text-white">
-        <div class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-                </a>
-
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="#" class="nav-link" th:href="@{http://localhost:8080/home}">Start</a></li>
-                    <li><a href="#" class="nav-link" th:href="@{http://localhost:8080/layout}">Filme</a></li>
-                    <li><a href="#" class="nav-link" th:href="@{http://localhost:8080/star}">Watchlist</a></li>
-
-                </ul>
-
-
-
-                <div class="text-end">
-                    <button type="button" class="btn btn-outline-light me-2">logout</button>
-
-
-
-                </div>
+</head>
+<header class="p-3 bg-dark text-white">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+            </a>
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="#" class="nav-link" style="color: #ADA51F;" th:href="@{http://localhost:8080/home}">Start</a></li>
+                <li><a href="#" class="nav-link" th:href="@{http://localhost:8080/layout}">Filme</a></li>
+                <li><a href="#" class="nav-link" th:href="@{http://localhost:8080/star}">Watchlist</a></li>
+            </ul>
+            <div class="text-end">
+                <button type="button" class="btn btn-outline-light me-2">logout</button>
             </div>
         </div>
-    </header>
-
-            </ul>
-        </header>
+    </div>
+</header>
 <body>
-<h1 th:text="${home}"/>
 <div class="row">
     <div class="col">
-        <h2><img src="Images/FilmPic.png" width="2000" height="500" alt="emoji" loading="lazy"></h2>
+        <h2><img src="Images/FilmPic.png" style="width:100%;" alt="emoji" loading="lazy"></h2>
     </div>
 </div>
-
 </body>
-    </div>
 </html>
