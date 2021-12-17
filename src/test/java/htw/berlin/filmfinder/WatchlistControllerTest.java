@@ -41,7 +41,7 @@ public class WatchlistControllerTest {
                 .param("ID", ""+tmpWatchlist.getWatchlist_id())
                 .param("name", tmpWatchlist.getName())
                 .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isCreated());
+                .accept(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isNoContent());
 
         mvc.perform(MockMvcRequestBuilders.post("/removeFromWatchlist")
                 .param("ID", ""+tmpWatchlist.getWatchlist_id())
