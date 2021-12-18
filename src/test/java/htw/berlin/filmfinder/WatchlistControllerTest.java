@@ -25,14 +25,6 @@ public class WatchlistControllerTest {
     @Autowired
     private MockMvc mvc;
 
-    /*
-    @Test
-    public void getHello() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("Greetings from Spring Boot!")));
-    }*/
-
     @Test
     public void addAndRemoveWatchlistTest() throws  Exception {
         Watchlist tmpWatchlist = new Watchlist(0,"Movie for Test");
@@ -41,10 +33,50 @@ public class WatchlistControllerTest {
                 .param("ID", ""+tmpWatchlist.getWatchlist_id())
                 .param("name", tmpWatchlist.getName())
                 .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isNoContent());
+                .accept(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isCreated());
 
         mvc.perform(MockMvcRequestBuilders.post("/removeFromWatchlist")
                 .param("ID", ""+tmpWatchlist.getWatchlist_id())
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void addWatchlistWrongParameterNamesTest() throws  Exception {
+        Watchlist tmpWatchlist = new Watchlist(0,"Movie for Test");
+
+        mvc.perform(MockMvcRequestBuilders.post("/addToWatchlist")
+                .param("ID", ""+tmpWatchlist.getWatchlist_id())
+                .param("names", tmpWatchlist.getName())
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isBadRequest());
+    }
+
+    @Test
+    public void addWatchlistDublicateKeyTest() throws  Exception {
+        Watchlist tmpWatchlist = new Watchlist(0,"Movie for Test");
+
+        mvc.perform(MockMvcRequestBuilders.post("/addToWatchlist")
+                .param("ID", ""+tmpWatchlist.getWatchlist_id())
+                .param("name", tmpWatchlist.getName())
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isCreated());
+
+        mvc.perform(MockMvcRequestBuilders.post("/addToWatchlist")
+                .param("ID", ""+tmpWatchlist.getWatchlist_id())
+                .param("name", tmpWatchlist.getName())
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isInternalServerError());
+
+        mvc.perform(MockMvcRequestBuilders.post("/removeFromWatchlist")
+                .param("ID", ""+tmpWatchlist.getWatchlist_id())
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void getFullWatchlistTest() throws  Exception {
+        mvc.perform(MockMvcRequestBuilders.post("/getFullWatchlist")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk());
     }
