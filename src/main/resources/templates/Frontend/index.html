@@ -68,7 +68,7 @@
                 if(this.movieWatchList.length > 0) {
                     let data = new FormData();
                     // ID is not needed for insert but is set here
-                    data.append('ID', 0);
+                    data.append('ID', 1);
                     data.append('name', this.movieWatchList);
                     axios.post('/addToWatchlist', data).then(
                     (response) => {
