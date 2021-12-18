@@ -24,6 +24,6 @@ public class CommonControllerTests {
                 .param("ID", ""+tmpWatchlist.getWatchlist_id())
                 .param("name", tmpWatchlist.getName())
                 .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk());
+                .accept(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isMethodNotAllowed());
     }
 }
