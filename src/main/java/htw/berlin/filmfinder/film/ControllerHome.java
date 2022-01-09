@@ -35,6 +35,12 @@ public class ControllerHome {
         return "Frontend/bewertung";
     }
 
+    @GetMapping(path = "beschreibung")
+    public String testa(Model model) {
+        return "Frontend/beschreibung";
+    }
+
+
 
     @PostMapping(path = "/addFilm")
     public ResponseEntity addFilm(@RequestParam(name = "ID") int film_id,
