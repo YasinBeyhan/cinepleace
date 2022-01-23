@@ -29,4 +29,5 @@ public class CommonControllerTests {
 
     // Comment
     // Comment 2
+    // Comment 3
 }
